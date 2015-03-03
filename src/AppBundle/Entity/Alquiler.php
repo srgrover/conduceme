@@ -64,6 +64,7 @@ class Alquiler
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(nullable=false)
      *
      * @var Cliente
      */
@@ -71,7 +72,6 @@ class Alquiler
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario")
-     * @ORM\JoinColumn(nullable=false)
      *
      * @var Cliente
      */
