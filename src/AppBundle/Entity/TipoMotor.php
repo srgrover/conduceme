@@ -11,6 +11,7 @@ class TipoMotor
 {
     /**
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      *
      * @var integer

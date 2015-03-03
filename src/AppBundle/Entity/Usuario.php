@@ -11,6 +11,7 @@ class Usuario
 {
     /**
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      *
      * @var integer
@@ -39,7 +40,7 @@ class Usuario
     protected $nie;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @var string
      */
