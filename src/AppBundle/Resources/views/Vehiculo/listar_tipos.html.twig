@@ -1,0 +1,19 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Listar tipos de vehículo{% endblock %}
+
+{% block content %}
+    <h1 class="well">Listado de tipos de vehículo</h1>
+
+    {# Esto es un comentario #}
+    {% if tipos_vehiculos %}
+        <ol>
+        {% for tipo in tipos_vehiculos %}
+            <li>{{ tipo }}</li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <h2>No hay vehículos para mostrar</h2>
+    {% endif %}
+
+{% endblock %}

@@ -54,4 +54,138 @@ class TipoVehiculo
      * @var integer
      */
     protected $puertas;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set modelo
+     *
+     * @param string $modelo
+     * @return TipoVehiculo
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+
+        return $this;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return string 
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * Set caballos
+     *
+     * @param integer $caballos
+     * @return TipoVehiculo
+     */
+    public function setCaballos($caballos)
+    {
+        $this->caballos = $caballos;
+
+        return $this;
+    }
+
+    /**
+     * Get caballos
+     *
+     * @return integer 
+     */
+    public function getCaballos()
+    {
+        return $this->caballos;
+    }
+
+    /**
+     * Set puertas
+     *
+     * @param integer $puertas
+     * @return TipoVehiculo
+     */
+    public function setPuertas($puertas)
+    {
+        $this->puertas = $puertas;
+
+        return $this;
+    }
+
+    /**
+     * Get puertas
+     *
+     * @return integer 
+     */
+    public function getPuertas()
+    {
+        return $this->puertas;
+    }
+
+    /**
+     * Set marca
+     *
+     * @param \AppBundle\Entity\Marca $marca
+     * @return TipoVehiculo
+     */
+    public function setMarca(\AppBundle\Entity\Marca $marca)
+    {
+        $this->marca = $marca;
+
+        return $this;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return \AppBundle\Entity\Marca 
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * Set tipoMotor
+     *
+     * @param \AppBundle\Entity\TipoMotor $tipoMotor
+     * @return TipoVehiculo
+     */
+    public function setTipoMotor(\AppBundle\Entity\TipoMotor $tipoMotor)
+    {
+        $this->tipoMotor = $tipoMotor;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoMotor
+     *
+     * @return \AppBundle\Entity\TipoMotor 
+     */
+    public function getTipoMotor()
+    {
+        return $this->tipoMotor;
+    }
+
+    public function __toString()
+    {
+        return $this->getMarca()
+            . ' ' . $this->getModelo()
+            . ' ' . $this->getTipoMotor()
+            . ' ' . $this->getCaballos() . 'CV'
+            . ' ' . $this->getPuertas() . ' puertas';
+    }
 }
