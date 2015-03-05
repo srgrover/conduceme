@@ -41,9 +41,9 @@ class Vehiculo
     protected $fechaCompra;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      *
-     * @var integer
+     * @var float
      */
     protected $kilometraje;
 
