@@ -30,7 +30,7 @@ class Alquiler
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumn(nullable=false)
      *
-     * @var Cliente
+     * @var Usuario
      */
     protected $cliente;
 
@@ -66,14 +66,14 @@ class Alquiler
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumn(nullable=false)
      *
-     * @var Cliente
+     * @var Usuario
      */
     protected $operadorRecogida;
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario")
      *
-     * @var Cliente
+     * @var Usuario
      */
     protected $operadorEntrega;
 
