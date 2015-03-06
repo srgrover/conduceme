@@ -1,0 +1,10 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Modificar vehículo #{{ tipo_vehiculo.id }}{% endblock %}
+
+{% block content %}
+    <h1 class="well">Modificar vehículo #{{ tipo_vehiculo.id }}</h1>
+
+    {{ form(formulario) }}
+
+{% endblock %}
