@@ -43,12 +43,6 @@ class TipoVehiculoType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-success'
                 ]
-            ])
-            ->add('eliminar', 'submit', [
-                'label' => 'Eliminar tipo de vehículo',
-                'attr' => [
-                    'class' => 'btn btn-danger'
-                ]
             ]);
     }
 

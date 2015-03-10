@@ -27,12 +27,59 @@ class VehiculoController extends Controller
     }
 
     /**
+     * @Route("/vehiculo/tipos/nuevo", name="tipo_vehiculo_nuevo"), methods={'GET', 'POST'}
+     */
+    public function nuevoTipoAction(Request $peticion)
+    {
+        // Inicializar un tipo de vehículo vacío
+        $tipovehiculo = new TipoVehiculo();
+
+        // Crear el formulario a partir de la clase
+        $formulario = $this->createForm(new TipoVehiculoType(), $tipovehiculo);
+
+        // Procesar el formulario si se ha enviado con un POST
+        $formulario->handleRequest($peticion);
+
+        // Si se ha enviado y el contenido es válido, guardar los cambios
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+
+            // Obtener el EntityManager
+            $em = $this->getDoctrine()->getManager();
+
+            // Asegurarse de que se tiene en cuenta el nuevo tipo de vehículo
+            $em->persist($tipovehiculo);
+
+            // Guardar los cambios
+            $em->flush();
+
+            // Redirigir al usuario a la lista
+            return new RedirectResponse(
+                $this->generateUrl('tipo_vehiculo_listar')
+            );
+        }
+
+        return $this->render('AppBundle:Vehiculo:nuevo_tipo.html.twig', [
+            'tipo_vehiculo' => $tipovehiculo,
+            'formulario' => $formulario->createView()
+        ]);
+    }
+
+    /**
      * @Route("/vehiculo/tipos/{tipovehiculo}", name="tipo_vehiculo_modificar"), methods={'GET', 'POST'}
      */
-    public function modificarTiposAction(TipoVehiculo $tipovehiculo, Request $peticion)
+    public function modificarTipoAction(TipoVehiculo $tipovehiculo, Request $peticion)
     {
         // Crear el formulario a partir de la clase
         $formulario = $this->createForm(new TipoVehiculoType(), $tipovehiculo);
+
+        // Añadir dinámicamente el botón de eliminar
+        $formulario
+            ->add('eliminar', 'submit', [
+                'label' => 'Eliminar tipo de vehículo',
+                'attr' => [
+                    'class' => 'btn btn-danger'
+                ]
+            ]);
 
         // Procesar el formulario si se ha enviado con un POST
         $formulario->handleRequest($peticion);
@@ -56,7 +103,7 @@ class VehiculoController extends Controller
             );
         }
 
-        return $this->render('AppBundle:Vehiculo:modificar_tipos.html.twig', [
+        return $this->render('AppBundle:Vehiculo:modificar_tipo.html.twig', [
             'tipo_vehiculo' => $tipovehiculo,
             'formulario' => $formulario->createView()
         ]);
