@@ -26,6 +26,18 @@ class TipoVehiculoType extends AbstractType
                 'label' => 'Modelo',
                 'required' => true
             ])
+            ->add('tipoMotor', null, [
+                'label' => 'Tipo de motor',
+                'required' => true
+            ])
+            ->add('caballos', null, [
+                'label' => 'Caballos',
+                'required' => true
+            ])
+            ->add('puertas', null, [
+                'label' => 'Nº de puertas',
+                'required' => true
+            ])
             ->add('enviar', 'submit', [
                 'label' => 'Guardar cambios',
                 'attr' => [
