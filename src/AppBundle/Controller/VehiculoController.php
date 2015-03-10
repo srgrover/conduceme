@@ -43,6 +43,10 @@ class VehiculoController extends Controller
             // Obtener el EntityManager
             $em = $this->getDoctrine()->getManager();
 
+            if ($formulario->get('eliminar')->isClicked()) {
+                $em->remove($tipovehiculo);
+            }
+
             // Guardar los cambios
             $em->flush();
 
