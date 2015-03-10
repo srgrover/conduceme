@@ -80,6 +80,49 @@ class VehiculoController extends Controller
     }
 
     /**
+     * @Route("/nuevo", name="vehiculo_nuevo"), methods={'GET', 'POST'}
+     */
+    public function nuevoAction(Request $peticion)
+    {
+        // Crear vehículo vacío
+        $vehiculo = new Vehiculo();
+
+        // Colocar hoy como fecha de compra por defecto y otros valores
+        $vehiculo->setFechaCompra(new \DateTime())
+            ->setPrecioDia(20)
+            ->setPrecioKm(0.1);
+
+        // Crear el formulario a partir de la clase
+        $formulario = $this->createForm(new VehiculoType(), $vehiculo);
+
+        // Procesar el formulario si se ha enviado con un POST
+        $formulario->handleRequest($peticion);
+
+        // Si se ha enviado y el contenido es válido, guardar los cambios
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+
+            // Obtener el EntityManager
+            $em = $this->getDoctrine()->getManager();
+
+            // Asegurarse de que se tiene en cuenta el nuevo vehículo
+            $em->persist($vehiculo);
+
+            // Guardar los cambios
+            $em->flush();
+
+            // Redirigir al usuario a la lista
+            return new RedirectResponse(
+                $this->generateUrl('vehiculos_listar')
+            );
+        }
+
+        return $this->render('AppBundle:Vehiculo:modificar.html.twig', [
+            'vehiculo' => $vehiculo,
+            'formulario' => $formulario->createView()
+        ]);
+    }
+
+    /**
      * @Route("/tipos", name="tipo_vehiculo_listar")
      */
     public function listarTiposAction()
