@@ -1,10 +1,11 @@
 {% extends '::layout.html.twig' %}
 
-{% block title %}Modificar vehículo #{{ tipo_vehiculo.id }}{% endblock %}
+{% block title %}Modificar tipo de vehículo #{{ tipo_vehiculo.id }}{% endblock %}
 
 {% block content %}
-    <h1 class="well">Modificar vehículo #{{ tipo_vehiculo.id }}</h1>
+    <h1 class="well">Modificar tipo de vehículo #{{ tipo_vehiculo.id }}</h1>
 
     {{ form(formulario) }}
 
+    <a href="{{ path('tipo_vehiculo_listar') }}" class="btn btn-info">Volver al listado de tipos de vehículo</a>
 {% endblock %}
