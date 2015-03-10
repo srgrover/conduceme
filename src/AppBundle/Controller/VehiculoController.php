@@ -9,10 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/vehiculo")
+ */
 class VehiculoController extends Controller
 {
     /**
-     * @Route("/vehiculo/tipos", name="tipo_vehiculo_listar")
+     * @Route("/tipos", name="tipo_vehiculo_listar")
      */
     public function listarTiposAction()
     {
@@ -27,7 +30,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/vehiculo/tipos/nuevo", name="tipo_vehiculo_nuevo"), methods={'GET', 'POST'}
+     * @Route("/tipos/nuevo", name="tipo_vehiculo_nuevo"), methods={'GET', 'POST'}
      */
     public function nuevoTipoAction(Request $peticion)
     {
@@ -65,7 +68,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/vehiculo/tipos/{tipovehiculo}", name="tipo_vehiculo_modificar"), methods={'GET', 'POST'}
+     * @Route("/tipos/{tipovehiculo}", name="tipo_vehiculo_modificar"), methods={'GET', 'POST'}
      */
     public function modificarTipoAction(TipoVehiculo $tipovehiculo, Request $peticion)
     {
