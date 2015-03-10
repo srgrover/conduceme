@@ -22,7 +22,10 @@ class VehiculoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $vehiculos = $em->getRepository('AppBundle:Vehiculo')
-            ->findAll();
+            ->createQueryBuilder('v')
+            ->orderBy('v.fechaCompra', 'DESC')
+            ->getQuery()
+            ->getResult();
 
         return $this->render('AppBundle:Vehiculo:listar.html.twig', [
             'vehiculos' => $vehiculos
