@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TipoVehiculo;
+use AppBundle\Entity\Vehiculo;
 use AppBundle\Form\Type\TipoVehiculoType;
+use AppBundle\Form\Type\VehiculoType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,6 +31,51 @@ class VehiculoController extends Controller
 
         return $this->render('AppBundle:Vehiculo:listar.html.twig', [
             'vehiculos' => $vehiculos
+        ]);
+    }
+
+    /**
+     * @Route("/modificar/{vehiculo}", name="vehiculo_modificar"), methods={'GET', 'POST'}
+     */
+    public function modificarAction(Vehiculo $vehiculo, Request $peticion)
+    {
+        // Crear el formulario a partir de la clase
+        $formulario = $this->createForm(new VehiculoType(), $vehiculo);
+
+        // Añadir dinámicamente el botón de eliminar
+        $formulario
+            ->add('eliminar', 'submit', [
+                'label' => 'Eliminar vehículo',
+                'attr' => [
+                    'class' => 'btn btn-danger'
+                ]
+            ]);
+
+        // Procesar el formulario si se ha enviado con un POST
+        $formulario->handleRequest($peticion);
+
+        // Si se ha enviado y el contenido es válido, guardar los cambios
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+
+            // Obtener el EntityManager
+            $em = $this->getDoctrine()->getManager();
+
+            if ($formulario->get('eliminar')->isClicked()) {
+                $em->remove($vehiculo);
+            }
+
+            // Guardar los cambios
+            $em->flush();
+
+            // Redirigir al usuario a la lista
+            return new RedirectResponse(
+                $this->generateUrl('vehiculos_listar')
+            );
+        }
+
+        return $this->render('AppBundle:Vehiculo:modificar.html.twig', [
+            'vehiculo' => $vehiculo,
+            'formulario' => $formulario->createView()
         ]);
     }
 
