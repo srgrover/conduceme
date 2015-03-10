@@ -15,6 +15,21 @@ use Symfony\Component\HttpFoundation\Request;
 class VehiculoController extends Controller
 {
     /**
+     * @Route("/listar", name="vehiculos_listar")
+     */
+    public function listarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $vehiculos = $em->getRepository('AppBundle:Vehiculo')
+            ->findAll();
+
+        return $this->render('AppBundle:Vehiculo:listar.html.twig', [
+            'vehiculos' => $vehiculos
+        ]);
+    }
+
+    /**
      * @Route("/tipos", name="tipo_vehiculo_listar")
      */
     public function listarTiposAction()

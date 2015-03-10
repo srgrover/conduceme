@@ -1,0 +1,43 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Listar vehículos{% endblock %}
+
+{% block content %}
+    <h1 class="well">Listado de vehículos de la empresa</h1>
+
+    {% if vehiculos %}
+        <table class="table table-bordered table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Marca y modelo</th>
+                <th>Precio/día</th>
+                <th>Precio/km</th>
+                <th>¿Disponible?</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vehiculo in vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.matricula }}</td>
+                    <td>{{ vehiculo.tipo }}</td>
+                    <td>{{ vehiculo.precioDia }}</td>
+                    <td>{{ vehiculo.precioKm }}</td>
+                    <td>{{ vehiculo.cliente ? 'No' : 'Sí' }}</td>
+                    <td>
+                        <a href="" class="btn btn-default btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Modificar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No hay vehículos para mostrar</h2>
+    {% endif %}
+
+    <a href="{{ path('portada') }}" class="btn btn-info">Volver a la portada</a>&nbsp;
+    <a href="" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Crear un nuevo vehículo</a>
+{% endblock %}
