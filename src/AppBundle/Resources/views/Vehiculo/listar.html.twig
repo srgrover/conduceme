@@ -22,8 +22,8 @@
                 <tr>
                     <td>{{ vehiculo.matricula }}</td>
                     <td>{{ vehiculo.tipo }}</td>
-                    <td>{{ vehiculo.precioDia }}</td>
-                    <td>{{ vehiculo.precioKm }}</td>
+                    <td>{{ vehiculo.precioDia | number_format(2, ',', '.')}} €</td>
+                    <td>{{ vehiculo.precioKm | number_format(2, ',', '.')}} €</td>
                     <td>{{ vehiculo.cliente ? 'No' : 'Sí' }}</td>
                     <td>
                         <a href="" class="btn btn-default btn-xs">
