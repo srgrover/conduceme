@@ -9,7 +9,7 @@
     {% if tipos_vehiculos %}
         <ol>
         {% for tipo in tipos_vehiculos %}
-            <li><a href="">{{ tipo }}</a></li>
+            <li><a href="{{ path('tipo_vehiculo_modificar', {'tipovehiculo': tipo.id}) }}">{{ tipo }}</a></li>
         {% endfor %}
         </ol>
     {% else %}
