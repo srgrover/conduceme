@@ -26,6 +26,27 @@ class Marca
     protected $descripcion;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    protected $correoElectronico;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string
+     */
+    protected $telefonoContacto;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @var string
+     */
+    protected $observaciones;
+
+    /**
      * Get id
      *
      * @return integer 
