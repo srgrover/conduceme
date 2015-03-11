@@ -267,4 +267,9 @@ class Usuario
     {
         return $this->esAdministrador;
     }
+
+    public function __toString()
+    {
+        return $this->getNombreUsuario() . ' (' . $this->getNie() . ')';
+    }
 }
