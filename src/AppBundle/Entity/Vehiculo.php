@@ -226,10 +226,10 @@ class Vehiculo
     /**
      * Set tipo
      *
-     * @param \AppBundle\Entity\TipoVehiculo $tipo
+     * @param TipoVehiculo $tipo
      * @return Vehiculo
      */
-    public function setTipo(\AppBundle\Entity\TipoVehiculo $tipo)
+    public function setTipo(TipoVehiculo $tipo)
     {
         $this->tipo = $tipo;
 
@@ -239,7 +239,7 @@ class Vehiculo
     /**
      * Get tipo
      *
-     * @return \AppBundle\Entity\TipoVehiculo 
+     * @return TipoVehiculo
      */
     public function getTipo()
     {
@@ -249,10 +249,10 @@ class Vehiculo
     /**
      * Set cliente
      *
-     * @param \AppBundle\Entity\Usuario $cliente
+     * @param Usuario $cliente
      * @return Vehiculo
      */
-    public function setCliente(\AppBundle\Entity\Usuario $cliente = null)
+    public function setCliente(Usuario $cliente = null)
     {
         $this->cliente = $cliente;
 
@@ -262,7 +262,7 @@ class Vehiculo
     /**
      * Get cliente
      *
-     * @return \AppBundle\Entity\Usuario 
+     * @return Usuario
      */
     public function getCliente()
     {

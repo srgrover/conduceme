@@ -242,10 +242,10 @@ class Alquiler
     /**
      * Set vehiculo
      *
-     * @param \AppBundle\Entity\Vehiculo $vehiculo
+     * @param Vehiculo $vehiculo
      * @return Alquiler
      */
-    public function setVehiculo(\AppBundle\Entity\Vehiculo $vehiculo)
+    public function setVehiculo(Vehiculo $vehiculo)
     {
         $this->vehiculo = $vehiculo;
 
@@ -255,7 +255,7 @@ class Alquiler
     /**
      * Get vehiculo
      *
-     * @return \AppBundle\Entity\Vehiculo 
+     * @return Vehiculo
      */
     public function getVehiculo()
     {
@@ -265,10 +265,10 @@ class Alquiler
     /**
      * Set cliente
      *
-     * @param \AppBundle\Entity\Usuario $cliente
+     * @param Usuario $cliente
      * @return Alquiler
      */
-    public function setCliente(\AppBundle\Entity\Usuario $cliente)
+    public function setCliente(Usuario $cliente)
     {
         $this->cliente = $cliente;
 
@@ -278,7 +278,7 @@ class Alquiler
     /**
      * Get cliente
      *
-     * @return \AppBundle\Entity\Usuario 
+     * @return Usuario
      */
     public function getCliente()
     {
@@ -288,10 +288,10 @@ class Alquiler
     /**
      * Set operadorRecogida
      *
-     * @param \AppBundle\Entity\Usuario $operadorRecogida
+     * @param Usuario $operadorRecogida
      * @return Alquiler
      */
-    public function setOperadorRecogida(\AppBundle\Entity\Usuario $operadorRecogida)
+    public function setOperadorRecogida(Usuario $operadorRecogida)
     {
         $this->operadorRecogida = $operadorRecogida;
 
@@ -301,7 +301,7 @@ class Alquiler
     /**
      * Get operadorRecogida
      *
-     * @return \AppBundle\Entity\Usuario 
+     * @return Usuario
      */
     public function getOperadorRecogida()
     {
@@ -311,10 +311,10 @@ class Alquiler
     /**
      * Set operadorEntrega
      *
-     * @param \AppBundle\Entity\Usuario $operadorEntrega
+     * @param Usuario $operadorEntrega
      * @return Alquiler
      */
-    public function setOperadorEntrega(\AppBundle\Entity\Usuario $operadorEntrega = null)
+    public function setOperadorEntrega(Usuario $operadorEntrega = null)
     {
         $this->operadorEntrega = $operadorEntrega;
 
@@ -324,7 +324,7 @@ class Alquiler
     /**
      * Get operadorEntrega
      *
-     * @return \AppBundle\Entity\Usuario 
+     * @return Usuario
      */
     public function getOperadorEntrega()
     {

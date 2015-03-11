@@ -137,10 +137,10 @@ class TipoVehiculo
     /**
      * Set marca
      *
-     * @param \AppBundle\Entity\Marca $marca
+     * @param Marca $marca
      * @return TipoVehiculo
      */
-    public function setMarca(\AppBundle\Entity\Marca $marca)
+    public function setMarca(Marca $marca)
     {
         $this->marca = $marca;
 
@@ -150,7 +150,7 @@ class TipoVehiculo
     /**
      * Get marca
      *
-     * @return \AppBundle\Entity\Marca 
+     * @return Marca
      */
     public function getMarca()
     {
@@ -160,10 +160,10 @@ class TipoVehiculo
     /**
      * Set tipoMotor
      *
-     * @param \AppBundle\Entity\TipoMotor $tipoMotor
+     * @param TipoMotor $tipoMotor
      * @return TipoVehiculo
      */
-    public function setTipoMotor(\AppBundle\Entity\TipoMotor $tipoMotor)
+    public function setTipoMotor(TipoMotor $tipoMotor)
     {
         $this->tipoMotor = $tipoMotor;
 
@@ -173,7 +173,7 @@ class TipoVehiculo
     /**
      * Get tipoMotor
      *
-     * @return \AppBundle\Entity\TipoMotor 
+     * @return TipoMotor
      */
     public function getTipoMotor()
     {
