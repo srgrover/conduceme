@@ -26,6 +26,11 @@ class VehiculoType extends AbstractType
                 'label' => 'Tipo de vehículo',
                 'required' => true
             ])
+            ->add('cliente', null, [
+                'label' => 'Cliente actual',
+                'placeholder' => 'Ninguno, está disponible para el alquiler',
+                'required' => false
+            ])
             ->add('fechaCompra', null, [
                 'label' => 'Fecha de compra',
                 'required' => true
