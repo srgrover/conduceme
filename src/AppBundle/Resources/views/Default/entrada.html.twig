@@ -10,9 +10,9 @@ Entrar en la aplicación
             {{ error.message | trans }}
         </div>
     {% endif %}
-    <form method="post" action="{{ url('usuario_comprobar') }}">
+    <form method="post" action="{{ path('usuario_comprobar') }}">
     <input name="_username" placeholder="Nombre de usuario" value="{{ ultimo_usuario }}">
-    <input name="_password" placeholder="Contraseña">
+    <input name="_password" type="password" placeholder="Contraseña">
     <button type="submit">Entrar</button>
 </form>
 {% endblock %}
