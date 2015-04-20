@@ -1,0 +1,34 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Listar usuarios{% endblock %}
+
+{% block content %}
+    <h1 class="well">Listado de usuarios de la empresa</h1>
+
+    {% if usuarios %}
+        <table class="table table-bordered table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Nombre de usuario</th>
+                <th>NIE</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nombreUsuario }}</td>
+                    <td>{{ usuario.nie }}</td>
+                    <td>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No hay usuarios para mostrar</h2>
+    {% endif %}
+
+    <a href="{{ path('portada') }}" class="btn btn-info">Volver a la portada</a>&nbsp;
+
+{% endblock %}
