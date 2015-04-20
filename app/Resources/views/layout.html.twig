@@ -32,12 +32,15 @@
                             {% endif %}
                         </ul>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Usuarios <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ path('usuarios_listar') }}">Listar todos los usuarios{% if ruta == 'usuarios_listar' %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a></li>
+                            <li><a href="{{ path('usuarios_nuevo') }}">Crear un usuario{% if ruta == 'usuarios_nuevo' %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                     <li>
                         <a href="{{ path('usuario_salir') }}"><i class="glyphicon glyphicon-off"></i> Salir</a>
                     </li>
