@@ -10,9 +10,18 @@ use AppBundle\Entity\Vehiculo;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class DatosIniciales extends AbstractFixture implements OrderedFixtureInterface
+class DatosIniciales extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+    /**
+     * Contenedor
+     *
+     * @var ContainerInterface
+     */
+    private $container;
+
     protected function crearUsuarios(ObjectManager $em)
     {
         $usuarios = [
@@ -21,11 +30,13 @@ class DatosIniciales extends AbstractFixture implements OrderedFixtureInterface
             ['chuck', 'ninguna', '00000000A', 'chuck@norris.es', 50, true, false, false]
         ];
 
+        $helper = $this->container->get('security.password_encoder');
+
         foreach($usuarios as $datos) {
             $usuario = new Usuario();
             $usuario
                 ->setNombreUsuario($datos[0])
-                ->setPassword($datos[1])
+                ->setPassword($helper->encodePassword($usuario, $datos[1]))
                 ->setNie($datos[2])
                 ->setCorreoElectronico($datos[3])
                 ->setDescuento($datos[4])
@@ -118,5 +129,17 @@ class DatosIniciales extends AbstractFixture implements OrderedFixtureInterface
         $this->crearVehiculos($manager);
         $this->crearUsuarios($manager);
         $manager->flush();
+    }
+
+    /**
+     * Sets the Container.
+     *
+     * @param ContainerInterface|null $container A ContainerInterface instance or null
+     *
+     * @api
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 }
