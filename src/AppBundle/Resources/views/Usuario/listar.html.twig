@@ -20,6 +20,9 @@
                     <td>{{ usuario.nombreUsuario }}</td>
                     <td>{{ usuario.nie }}</td>
                     <td>
+                        <a href="{{ path('usuarios_modificar', { 'usuario': usuario.id }) }}" class="btn btn-default btn-xs">
+                            <i class="glyphicon glyphicon-pencil"></i> Modificar
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
