@@ -7,6 +7,7 @@ use AppBundle\Entity\Vehiculo;
 use AppBundle\Form\Type\TipoVehiculoType;
 use AppBundle\Form\Type\VehiculoType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -124,6 +125,7 @@ class VehiculoController extends Controller
 
     /**
      * @Route("/tipos", name="tipo_vehiculo_listar")
+     * @Security(expression="has_role('ROLE_ADMIN')")
      */
     public function listarTiposAction()
     {

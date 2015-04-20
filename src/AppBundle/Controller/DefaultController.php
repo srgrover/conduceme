@@ -8,10 +8,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/portada", name="portada")
+     * @Route("/", name="portada")
      */
     public function indexAction()
     {
         return $this->render('AppBundle:Default:portada.html.twig');
     }
+
+    /**
+     * @Route("/entrar", name="usuario_entrar")
+     */
+    public function loginAction()
+    {
+        $helper = $this->get('security.authentication_utils');
+
+        return $this->render('AppBundle:Default:entrada.html.twig',
+            [
+                'ultimo_usuario' => $helper->getLastUsername(),
+                'error' => $helper->getLastAuthenticationError()
+            ]);
+    }
+
+
 }

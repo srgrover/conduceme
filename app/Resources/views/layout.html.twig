@@ -27,8 +27,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-road"></i> Vehículos <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ path('vehiculos_listar') }}">Listar todos los vehículos{% if ruta == 'vehiculos_listar' %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a></li>
-                            <li><a href="{{ path('tipo_vehiculo_listar') }}">Listar tipos{% if ruta == 'tipo_vehiculo_listar' %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('tipo_vehiculo_listar') }}">Listar tipos{% if ruta == 'tipo_vehiculo_listar' %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a></li>
+                            {% endif %}
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuario_salir') }}">Salir</a>
                     </li>
                 </ul>
             </div><!--/.nav-collapse -->
